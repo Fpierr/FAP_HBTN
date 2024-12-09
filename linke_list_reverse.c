@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/* Definition for singly-linked list.
+/* Definition of structure ListNode for singly-linked list.
 struct ListNode {
     int val;
     struct ListNode *next;
