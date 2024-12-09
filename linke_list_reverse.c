@@ -21,7 +21,7 @@ Already defined in Leetcode
 struct ListNode* reverseBetween(struct ListNode *head, int left, int right)
 {
     struct ListNode *dummy, *preLeft, *leftNode, *current;
-    struct ListNode *prev, *nextNode, *newHead;
+    struct ListNode *prev, *temp, *newHead;
     int i = 0;
 
     if (!head || left == right)
@@ -45,10 +45,10 @@ struct ListNode* reverseBetween(struct ListNode *head, int left, int right)
     /* Reverse the sublist between left and right */
     for (i = left; i <= right; i++)
     {
-        nextNode = current->next;
+        temp = current->next;
         current->next = prev;
         prev = current;
-        current = nextNode;
+        current = temp;
     }
 
     /* Reconnect the reversed sublist with the rest of the list */
