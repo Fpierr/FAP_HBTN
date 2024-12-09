@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/* Definition for singly-linked list.*/
-struct ListN {
+/* Definition for singly-linked list.
+struct ListNode {
     int val;
-    struct ListN *next;
+    struct ListNode *next;
 };
+*/
 
 /* 
    * reverseBetween - reverses a sublist of a singly linked list
@@ -15,28 +16,33 @@ struct ListN {
 
    * Ruturn: A pointer to the head of newlist or null if !head.
 */
-struct ListN* reverseBetween(struct ListN* head, int left, int right) {
-    if (!head || left == right) {
-        return head;
-    }
+struct ListNode* reverseBetween(struct ListNode *head, int left, int right)
+{
+    struct ListNode *dummy, *preLeft, *leftNode, *current;
+    struct ListNode *prev, *nextNode, *newHead;
+    int i;
 
-    struct ListN *dummy = malloc(sizeof(struct ListN));
+    if (!head || left == right)
+        return (head);
+
+    dummy = malloc(sizeof(struct ListNode));
+    if (!dummy)
+        return (NULL);
+
     dummy->next = head;
-    struct ListN *preLeft = dummy;
+    preLeft = dummy;
 
-    // Move preLeft to the node just before the `left` position
-    for (int i = 1; i < left; i++) {
+    /* Move preLeft to the node just before the `left` position */
+    for (i = 1; i < left; i++)
         preLeft = preLeft->next;
-    }
 
-    /* The start of the sublist to be reversed */
-    struct ListN *leftNode = preLeft->next;
-    struct ListN *current = leftNode;
-    struct ListN *prev = NULL;
-    struct ListN *nextNode;
+    leftNode = preLeft->next;
+    current = leftNode;
+    prev = NULL;
 
     /* Reverse the sublist between left and right */
-    for (int i = left; i <= right; i++) {
+    for (i = left; i <= right; i++)
+    {
         nextNode = current->next;
         current->next = prev;
         prev = current;
@@ -48,7 +54,7 @@ struct ListN* reverseBetween(struct ListN* head, int left, int right) {
     leftNode->next = current;
 
     /* Return the modified list */
-    struct ListN* newHead = dummy->next;
+    newHead = dummy->next;
     free(dummy);
-    return newHead;
+    return (newHead);
 }
