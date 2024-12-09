@@ -6,6 +6,8 @@ struct ListNode {
     int val;
     struct ListNode *next;
 };
+
+Already defined in theetcode
 */
 
 /* 
