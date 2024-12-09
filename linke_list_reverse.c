@@ -7,7 +7,7 @@ struct ListNode {
     struct ListNode *next;
 };
 
-Already defined in theetcode
+Already defined in Leetcode
 */
 
 /* 
